@@ -1,4 +1,5 @@
 Describe 'Testing of the Confirm-File module' {
+    Remove-Module -Force -Name Confirm-File
     Import-Module -Force -Name .\Confirm-File.psm1
 
     New-Item -Path ".\" -Name "Testing" -ItemType "Directory" -Force
