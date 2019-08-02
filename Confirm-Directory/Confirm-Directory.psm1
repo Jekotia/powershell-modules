@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Confirms that the provided path exists and is a directory.
 
