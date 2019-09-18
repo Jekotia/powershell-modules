@@ -1,28 +1,44 @@
-@{
+﻿@{
     # Script module or binary module file associated with this manifest.
-    RootModule = 'Confirm-File.psm1'
+    RootModule = 'FilesystemObjects'
 
     # Version number of this module.
-    ModuleVersion = '1.0'
+    ModuleVersion = '1.0.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
 
     # ID used to uniquely identify this module
-    GUID = 'be1b32d0-35e0-4f92-8073-98be63d19070'
+    GUID = '7d622a51-f7ec-45b1-a7ba-4275083c083c'
 
     # Author of this module
-    Author = "Josh 'Jekotia' Ameli"
+    Author = 'Josh "Jekotia" Ameli'
 
     # Company or vendor of this module
-    #CompanyName = 'Unknown'
+    CompanyName = 'Jekotia.net'
 
     # Copyright statement for this module
-    #Copyright = '(c) 2019 jameli. All rights reserved.'
+    Copyright = 'Copyright (c) 2019 Josh "Jekotia" Ameli'
 
     # Description of the functionality provided by this module
-    # Description = ''
-
+    Description = @"
+Assert-Directory:
+    Returns true if the path exists as a directory, and false otherwise.
+Assert-File:
+    Returns true if the path exists as a file, and false otherwise.
+Assert-Reparsepoint
+    Returns true if the path exists as a reparse point, and false otherwise.
+Get-ReparseTarget:
+    Gets the Target value of a provided path, and returns the value of the reparse point located there.
+Get-ReparseType
+    Gets the type of reparse point of the target.
+"@
+<#
+Checks the target path against the following potentials:
+    a) does not exist
+    b) exists as a file
+    c) exists as a directory.
+#>
     # Minimum version of the Windows PowerShell engine required by this module
     # PowerShellVersion = ''
 
@@ -30,7 +46,7 @@
     # PowerShellHostName = ''
 
     # Minimum version of the Windows PowerShell host required by this module
-    # PowerShellHostVersion = ''
+    PowerShellHostVersion = '5.1'
 
     # Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
     # DotNetFrameworkVersion = ''
@@ -60,13 +76,19 @@
     # NestedModules = @()
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-    FunctionsToExport = @()
+    FunctionsToExport = @(
+        'Assert-Directory'
+        'Assert-File'
+        'Assert-Reparsepoint'
+        'Get-ReparseTarget'
+        'Get-ReparseType'
+    )
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport = @()
 
     # Variables to export from this module
-    VariablesToExport = '*'
+    VariablesToExport = @()
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
     AliasesToExport = @()
@@ -78,7 +100,17 @@
     # ModuleList = @()
 
     # List of all files packaged with this module
-    # FileList = @()
+    FileList = @(
+        'Private\isDirectory.ps1'
+        'Private\isFile.ps1'
+        'Public\Assert-Directory.ps1'
+        'Public\Assert-File.ps1'
+        'Public\Assert-Reparsepoint.ps1'
+        'Public\Get-ReparseTarget.ps1'
+        'Public\Get-ReparseType.ps1'
+        'FilesystemObjects.psd1'
+        'FilesystemObjects.psm1'
+    )
 
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
     PrivateData = @{
@@ -89,10 +121,10 @@
             # Tags = @()
 
             # A URL to the license for this module.
-            # LicenseUri = ''
+            LicenseUri = 'https://github.com/Jekotia/powershell-modules/blob/master/LICENSE'
 
             # A URL to the main website for this project.
-            # ProjectUri = ''
+            ProjectUri = 'https://github.com/Jekotia/powershell-modules/tree/master/FilesystemObjects'
 
             # A URL to an icon representing this module.
             # IconUri = ''
@@ -109,4 +141,5 @@
 
     # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
     # DefaultCommandPrefix = ''
+
 }
