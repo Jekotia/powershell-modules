@@ -18,10 +18,35 @@
     CompanyName = 'Jekotia.net'
 
     # Copyright statement for this module
-    Copyright = 'Copyright (c) 2019 Josh "Jekotia" Ameli'
+    Copyright = ''
 
     # Description of the functionality provided by this module
-    # Description = ''
+    Description = @'
+Derived from https://foxdeploy.com/2015/04/16/part-ii-deploying-powershell-guis-in-minutes-using-visual-studio/
+
+Imports XAML used in WPF as a GUI for PowerShell.
+    
+Usage:
+    Load XAML:
+        Import-XAMLGUI (Get-Content -Path "$PSScriptRoot\VSUI_4\MainWIndow.xaml")
+            OR
+        Import-XAMLGUI $InputXML
+
+    Examples:
+        Adding items to a dropdown/combo box
+            $vmpicklistView.items.Add([pscustomobject]@{'VMName'=($_).Name;Status=$_.Status;Other="Yes"})
+
+        Setting the text of a text box to the current PC name    
+            $XAMLGUI_textBox.Text = $env:COMPUTERNAME
+
+        Adding code to a button, so that when clicked, it pings a system
+         $XAMLGUI_button.Add_Click({ Test-connection -count 1 -ComputerName $XAMLGUI_textBox.Text
+         })
+        
+
+    Show the form:
+        Initialize-XAMLGUI
+'@
 
     # Minimum version of the Windows PowerShell engine required by this module
     # PowerShellVersion = ''
