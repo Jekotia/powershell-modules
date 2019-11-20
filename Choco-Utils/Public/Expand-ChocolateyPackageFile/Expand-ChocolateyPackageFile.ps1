@@ -29,7 +29,7 @@ function Expand-ChocolateyPackageFile_main {
 			New-Item -ItemType Directory -Path "$($outputDir)"
 			if ($?) {
 				Write-Debug "Unpacking $name.nupkg as $copyZip..."
-				Expand-Archive -Path "$($copyZip)" -DestinationPath "$($outputDir)"
+				Microsoft.PowerShell.Archive\Expand-Archive -Path "$($copyZip)" -DestinationPath "$($outputDir)"
 				if ($?) {
 					Write-Debug "Removing extraneous files from extraction target"
 					Remove-Item `
